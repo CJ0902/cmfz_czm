@@ -88,6 +88,8 @@ public class UserController {
             userService.updat(user);
         }
         System.out.println("我进行了一个修改");
+        System.out.println("我在本地也进行了一个修改");
+        System.out.println("我在本地也进行了一个修改");
     }
 
     //查所有导出
