@@ -1,0 +1,37 @@
+{
+  "total":"3",
+  "records":"9",
+  "page":"1",
+  "rows":[
+    {
+      "id":"1",
+      "src_img":"1.jpg",
+      "describe":"描述",
+      "state":"1",
+      "upload_time":"2001.01.02"
+    },{
+      "id":"1",
+      "src_img":"1.jpg",
+      "describe":"描述",
+      "state":"查看",
+      "upload_time":"2001-01-02"
+    },{
+      "id":"2",
+      "src_img":"1.jpg",
+      "describe":"描述",
+      "state":"1",
+      "upload_time":"2001-01-02"
+    },{
+      "id":"3",
+      "src_img":"1.jpg",
+      "describe":"描述",
+      "state":"2",
+      "upload_time":"2001-01-02"
+    }
+  ]
+}
+
+
+
+
+

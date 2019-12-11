@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.czm.dao.UserDao">
+    <!--查所有-->
+    <select id="queryAll" resultType="User">
+        select * from c_user limit ${(page-1)*rows},#{rows}
+    </select>
+    <!--总条数-->
+    <select id="totalcount" resultType="int">
+        select count(*) from  c_user
+    </select>
+    <!--修改状态-->
+    <update id="updat">
+        update c_user
+        <set>
+            <if test="status!=null">
+                status=#{status}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--查所有__-导出-->
+    <select id="queryAlls" resultType="User">
+        select * from c_user
+    </select>
+</mapper>

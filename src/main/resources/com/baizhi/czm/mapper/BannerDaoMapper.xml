@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.czm.dao.BannerDao">
+
+    <select id="selectAll" resultType="Banner">
+        select * from c_banner  limit ${(page-1)*rows},#{rows}
+    </select>
+
+    <select id="totalcount" resultType="int">
+        select count(*) from  c_banner
+    </select>
+
+
+    <!--添加-->
+    <insert id="add">
+            insert into c_banner(id,src_img,describ,upload_time,state) values (#{id},#{src_img},#{describ},#{upload_time},#{state})
+    </insert>
+    <!--修改-->
+    <update id="updateByID">
+        update c_banner
+        <set>
+            <if test="describ!=null">
+                describ=#{describ},
+            </if>
+            <if test="state!=null">
+                state=#{state}
+            </if>
+        </set>
+        where  id=#{id}
+    </update>
+    <!--删除-->
+    <delete id="deletByID">
+        delete from c_banner where id=#{id}
+    </delete>
+</mapper>
+

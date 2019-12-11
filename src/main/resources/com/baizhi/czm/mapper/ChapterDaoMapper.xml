@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.czm.dao.ChapterDao">
+    <!---声明表链接的手册 -->
+    <resultMap type="com.baizhi.czm.entity.Chapter" id="cid">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="src" property="src"/>
+        <result column="duration" property="duration"/>
+        <result column="upload_time" property="upload_time"/>
+        <result column="size" property="size"/>
+        <result column="album_id" property="album_id"/>
+
+        <association property="album" javaType="com.baizhi.czm.entity.Album">
+            <result column="title" property="title"/>
+        </association>
+    </resultMap>
+
+    <!--查所有-->
+    <select id="selectAll" resultMap="cid">
+		select * from c_chapter c
+		left join c_album a
+		on c.album_id=a.id
+		where c.album_id=#{c.album_id}
+	</select>
+    <!--所有条数-->
+    <select id="totalcount" resultType="int">
+        select count(*) from  c_chapter
+    </select>
+    <!--添加-->
+    <insert id="add">
+        insert into  c_chapter (id,title,src,duration,upload_time,size,album_id)
+                values (#{id},#{title},#{src},#{duration},#{upload_time},#{size},#{album_id})
+    </insert>
+    <!--修改-->
+    <update id="update">
+        update  c_chapter
+        <set>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+            <if test="src!=null">
+                src=#{src},
+            </if>
+            <if test="duration!=null">
+                duration=#{duration},
+            </if>
+            <if test="size!=null">
+                size=#{size}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="delet">
+        delete from c_chapter where id=#{id}
+    </delete>
+</mapper>
+
