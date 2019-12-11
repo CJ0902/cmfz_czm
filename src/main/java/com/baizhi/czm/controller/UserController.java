@@ -87,6 +87,7 @@ public class UserController {
         if (oper.equals("edit")){
             userService.updat(user);
         }
+        System.out.println("我进行了一个修改");
     }
 
     //查所有导出
